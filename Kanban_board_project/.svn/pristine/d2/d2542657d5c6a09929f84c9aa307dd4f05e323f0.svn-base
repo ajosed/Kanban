@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Kanban_board_project;
+
+namespace Kanban_board_project.html
+{
+    public partial class login : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (code.Value.CompareTo(Session["CaptchaImageText"].ToString()) != 0)
+            {
+                Response.Redirect("main.aspx");
+                return;
+            }
+
+            management mg = new management();
+
+            string userText = string.Format("{0}", Request.Form["user"]);
+            string passText = string.Format("{0}", Request.Form["pass"]);
+
+            if (mg.yaExisteUser(userText))
+            {
+                Response.Redirect("main.aspx");
+                return;
+            }
+            else
+            {
+                string nameText = string.Format("{0}", Request.Form["name"]);
+                string profText = DropDownList1.SelectedValue;
+                string emailText = string.Format("{0}", Request.Form["email"]);
+                mg.insertingRecord(nameText, profText, emailText, userText, passText);
+                Response.Redirect("Dashboard.aspx");
+            }
+        }
+    }
+}

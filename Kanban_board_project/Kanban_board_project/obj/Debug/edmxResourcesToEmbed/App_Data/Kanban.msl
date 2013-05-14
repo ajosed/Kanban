@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KanbanModelStoreContainer" CdmEntityContainer="KanbanEntities">
+    <EntitySetMapping Name="BOARDS">
+      <EntityTypeMapping TypeName="KanbanModel.BOARD">
+        <MappingFragment StoreEntitySet="BOARDS">
+          <ScalarProperty Name="IDBOARD" ColumnName="IDBOARD" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="COLUMNAS" ColumnName="COLUMNAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARDS">
+      <EntityTypeMapping TypeName="KanbanModel.CARD">
+        <MappingFragment StoreEntitySet="CARDS">
+          <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFINAL" ColumnName="FECHAFINAL" />
+          <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+          <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARDSxUSUARIOS">
+      <EntityTypeMapping TypeName="KanbanModel.CARDSxUSUARIO">
+        <MappingFragment StoreEntitySet="CARDSxUSUARIOS">
+          <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COLUMNAs">
+      <EntityTypeMapping TypeName="KanbanModel.COLUMNA">
+        <MappingFragment StoreEntitySet="COLUMNA">
+          <ScalarProperty Name="IDCOLUMNA" ColumnName="IDCOLUMNA" />
+          <ScalarProperty Name="IDBOARD" ColumnName="IDBOARD" />
+          <ScalarProperty Name="POSICION" ColumnName="POSICION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="WHIPLIMITE" ColumnName="WHIPLIMITE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRIORIDADES">
+      <EntityTypeMapping TypeName="KanbanModel.PRIORIDADE">
+        <MappingFragment StoreEntitySet="PRIORIDADES">
+          <ScalarProperty Name="IDPRIORIDADES" ColumnName="IDPRIORIDADES" />
+          <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLEs">
+      <EntityTypeMapping TypeName="KanbanModel.ROLE">
+        <MappingFragment StoreEntitySet="ROLE">
+          <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+          <ScalarProperty Name="ROLE1" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KanbanModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOes">
+      <EntityTypeMapping TypeName="KanbanModel.TIPO">
+        <MappingFragment StoreEntitySet="TIPO">
+          <ScalarProperty Name="IDTIPOS" ColumnName="IDTIPOS" />
+          <ScalarProperty Name="TIPO1" ColumnName="TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="KanbanModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PROFECION" ColumnName="PROFECION" />
+          <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+          <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOSxBOARDs">
+      <EntityTypeMapping TypeName="KanbanModel.USUARIOSxBOARD">
+        <MappingFragment StoreEntitySet="USUARIOSxBOARD">
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDBOARD" ColumnName="IDBOARD" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CARDSxCOLUMNAS" TypeName="KanbanModel.CARDSxCOLUMNAS" StoreEntitySet="CARDSxCOLUMNAS">
+      <EndProperty Name="CARDS">
+        <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+      </EndProperty>
+      <EndProperty Name="COLUMNA">
+        <ScalarProperty Name="IDCOLUMNA" ColumnName="IDCOLUMNA" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

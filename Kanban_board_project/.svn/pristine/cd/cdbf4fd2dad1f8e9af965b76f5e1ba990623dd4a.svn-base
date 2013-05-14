@@ -1,0 +1,51 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="testeandoGraphics.html.Dashboard" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kanban Boards Project</title>
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="style3"></div><div class="style_2"><span class="style3"><a href="http://www.zonnebank-studio-vergelijk.nl" title="Zonnebank Zonnestudio"><strong>Zonnebank zonnestudio</strong></a></span></div>
+<div id="wrap">
+<div id="topbar">
+  <h1 id="sitename"><a href="Dashboard.aspx" target="_blank"><img src="images/multimedia/logo.png" width=180 height=65/></a></h1>
+  <div id="menus">
+  <ul id="topmenu">
+<li  class="active"><a href="#">Dashboard</a>
+</li>
+<li><a href="#">Mis Proyectos</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="header_dashboard">
+
+</div>
+<div id="content">
+<div id="mainpage">
+<p>
+</p>
+</div>
+<div id="sidebar">
+
+</div>
+
+
+  <div id="sidebarbottom"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+</div>
+<div id="footer">
+<p>Copyright &copy; 2013 Kanban boards project|</p>
+</div>
+</body>
+</html>

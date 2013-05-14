@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KanbanModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="KanbanEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BOARDS" EntityType="KanbanModel.BOARD" />
+    <EntitySet Name="CARDS" EntityType="KanbanModel.CARD" />
+    <EntitySet Name="CARDSxUSUARIOS" EntityType="KanbanModel.CARDSxUSUARIO" />
+    <EntitySet Name="COLUMNAs" EntityType="KanbanModel.COLUMNA" />
+    <EntitySet Name="PRIORIDADES" EntityType="KanbanModel.PRIORIDADE" />
+    <EntitySet Name="ROLEs" EntityType="KanbanModel.ROLE" />
+    <EntitySet Name="sysdiagrams" EntityType="KanbanModel.sysdiagram" />
+    <EntitySet Name="TIPOes" EntityType="KanbanModel.TIPO" />
+    <EntitySet Name="USUARIOS" EntityType="KanbanModel.USUARIO" />
+    <EntitySet Name="USUARIOSxBOARDs" EntityType="KanbanModel.USUARIOSxBOARD" />
+    <AssociationSet Name="FK_USUARIOSxBOARD_BOARDS" Association="KanbanModel.FK_USUARIOSxBOARD_BOARDS">
+      <End Role="BOARDS" EntitySet="BOARDS" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDS_PRIORIDADES" Association="KanbanModel.FK_CARDS_PRIORIDADES">
+      <End Role="PRIORIDADES" EntitySet="PRIORIDADES" />
+      <End Role="CARDS" EntitySet="CARDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDS_TIPO" Association="KanbanModel.FK_CARDS_TIPO">
+      <End Role="TIPO" EntitySet="TIPOes" />
+      <End Role="CARDS" EntitySet="CARDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDSxUSUARIOS_CARDS" Association="KanbanModel.FK_CARDSxUSUARIOS_CARDS">
+      <End Role="CARDS" EntitySet="CARDS" />
+      <End Role="CARDSxUSUARIOS" EntitySet="CARDSxUSUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOSxBOARD_ROLE" Association="KanbanModel.FK_USUARIOSxBOARD_ROLE">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOSxBOARD_USUARIOS" Association="KanbanModel.FK_USUARIOSxBOARD_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARDs" />
+    </AssociationSet>
+    <AssociationSet Name="CARDSxCOLUMNAS" Association="KanbanModel.CARDSxCOLUMNAS">
+      <End Role="CARDS" EntitySet="CARDS" />
+      <End Role="COLUMNA" EntitySet="COLUMNAs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BOARD">
+    <Key>
+      <PropertyRef Name="IDBOARD" />
+    </Key>
+    <Property Name="IDBOARD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FECHAINICIO" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="COLUMNAS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="USUARIOSxBOARDs" Relationship="KanbanModel.FK_USUARIOSxBOARD_BOARDS" FromRole="BOARDS" ToRole="USUARIOSxBOARD" />
+  </EntityType>
+  <EntityType Name="CARD">
+    <Key>
+      <PropertyRef Name="IDCARD" />
+    </Key>
+    <Property Name="IDCARD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FECHAINICIO" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FECHAFINAL" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="COLOR" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="PRIORIDAD" Type="Int32" Nullable="false" />
+    <Property Name="TIPO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PRIORIDADE" Relationship="KanbanModel.FK_CARDS_PRIORIDADES" FromRole="CARDS" ToRole="PRIORIDADES" />
+    <NavigationProperty Name="TIPO1" Relationship="KanbanModel.FK_CARDS_TIPO" FromRole="CARDS" ToRole="TIPO" />
+    <NavigationProperty Name="CARDSxUSUARIOS" Relationship="KanbanModel.FK_CARDSxUSUARIOS_CARDS" FromRole="CARDS" ToRole="CARDSxUSUARIOS" />
+    <NavigationProperty Name="COLUMNAs" Relationship="KanbanModel.CARDSxCOLUMNAS" FromRole="CARDS" ToRole="COLUMNA" />
+  </EntityType>
+  <EntityType Name="CARDSxUSUARIO">
+    <Key>
+      <PropertyRef Name="IDCARD" />
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDCARD" Type="Int32" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CARD" Relationship="KanbanModel.FK_CARDSxUSUARIOS_CARDS" FromRole="CARDSxUSUARIOS" ToRole="CARDS" />
+  </EntityType>
+  <EntityType Name="COLUMNA">
+    <Key>
+      <PropertyRef Name="IDCOLUMNA" />
+    </Key>
+    <Property Name="IDCOLUMNA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDBOARD" Type="Int32" Nullable="false" />
+    <Property Name="POSICION" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="WHIPLIMITE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CARDS" Relationship="KanbanModel.CARDSxCOLUMNAS" FromRole="COLUMNA" ToRole="CARDS" />
+  </EntityType>
+  <EntityType Name="PRIORIDADE">
+    <Key>
+      <PropertyRef Name="IDPRIORIDADES" />
+    </Key>
+    <Property Name="IDPRIORIDADES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRIORIDAD" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CARDS" Relationship="KanbanModel.FK_CARDS_PRIORIDADES" FromRole="PRIORIDADES" ToRole="CARDS" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="IDROLE" />
+    </Key>
+    <Property Name="IDROLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLE1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="USUARIOSxBOARDs" Relationship="KanbanModel.FK_USUARIOSxBOARD_ROLE" FromRole="ROLE" ToRole="USUARIOSxBOARD" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TIPO">
+    <Key>
+      <PropertyRef Name="IDTIPOS" />
+    </Key>
+    <Property Name="IDTIPOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TIPO1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CARDS" Relationship="KanbanModel.FK_CARDS_TIPO" FromRole="TIPO" ToRole="CARDS" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PROFECION" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="USUARIO1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CORREO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="USUARIOSxBOARDs" Relationship="KanbanModel.FK_USUARIOSxBOARD_USUARIOS" FromRole="USUARIOS" ToRole="USUARIOSxBOARD" />
+  </EntityType>
+  <EntityType Name="USUARIOSxBOARD">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+      <PropertyRef Name="IDBOARD" />
+      <PropertyRef Name="ROLE" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="IDBOARD" Type="Int32" Nullable="false" />
+    <Property Name="ROLE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BOARD" Relationship="KanbanModel.FK_USUARIOSxBOARD_BOARDS" FromRole="USUARIOSxBOARD" ToRole="BOARDS" />
+    <NavigationProperty Name="ROLE1" Relationship="KanbanModel.FK_USUARIOSxBOARD_ROLE" FromRole="USUARIOSxBOARD" ToRole="ROLE" />
+    <NavigationProperty Name="USUARIO" Relationship="KanbanModel.FK_USUARIOSxBOARD_USUARIOS" FromRole="USUARIOSxBOARD" ToRole="USUARIOS" />
+  </EntityType>
+  <Association Name="FK_USUARIOSxBOARD_BOARDS">
+    <End Role="BOARDS" Type="KanbanModel.BOARD" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOARDS">
+        <PropertyRef Name="IDBOARD" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="IDBOARD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDS_PRIORIDADES">
+    <End Role="PRIORIDADES" Type="KanbanModel.PRIORIDADE" Multiplicity="1" />
+    <End Role="CARDS" Type="KanbanModel.CARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRIORIDADES">
+        <PropertyRef Name="IDPRIORIDADES" />
+      </Principal>
+      <Dependent Role="CARDS">
+        <PropertyRef Name="PRIORIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDS_TIPO">
+    <End Role="TIPO" Type="KanbanModel.TIPO" Multiplicity="1" />
+    <End Role="CARDS" Type="KanbanModel.CARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO">
+        <PropertyRef Name="IDTIPOS" />
+      </Principal>
+      <Dependent Role="CARDS">
+        <PropertyRef Name="TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDSxUSUARIOS_CARDS">
+    <End Role="CARDS" Type="KanbanModel.CARD" Multiplicity="1" />
+    <End Role="CARDSxUSUARIOS" Type="KanbanModel.CARDSxUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDS">
+        <PropertyRef Name="IDCARD" />
+      </Principal>
+      <Dependent Role="CARDSxUSUARIOS">
+        <PropertyRef Name="IDCARD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOSxBOARD_ROLE">
+    <End Role="ROLE" Type="KanbanModel.ROLE" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="IDROLE" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOSxBOARD_USUARIOS">
+    <End Role="USUARIOS" Type="KanbanModel.USUARIO" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARDSxCOLUMNAS">
+    <End Role="CARDS" Type="KanbanModel.CARD" Multiplicity="*" />
+    <End Role="COLUMNA" Type="KanbanModel.COLUMNA" Multiplicity="*" />
+  </Association>
+</Schema>

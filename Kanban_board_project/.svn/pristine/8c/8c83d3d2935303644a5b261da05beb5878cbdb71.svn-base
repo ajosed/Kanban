@@ -1,0 +1,16 @@
+﻿<%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %> 
+  <%@ Page Title="" Language="C#" MasterPageFile="~/SidePanels.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="Kanban.Inicio" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
+    <p>
+    hola</p>
+    <recaptcha:RecaptchaControl 
+    ID="recaptcha"
+    runat="server"
+    PublicKey="6LdfhOASAAAAAB9NFgVl1q8Q5uOGC2RsGnlrJC3J"
+    PrivateKey="6LdfhOASAAAAAJXflLTQACkx0jOceP97guEHjnqT"
+    /> <p>
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    </p>
+</asp:Content>

@@ -1,0 +1,9 @@
+c:\users\boston\documents\visual studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Kanban_board_project.dll
+c:\users\boston\documents\visual studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Kanban_board_project.pdb
+c:\users\boston\documents\visual studio 2010\Projects\Kanban_board_project\Kanban_board_project\obj\Debug\Kanban_board_project.dll
+c:\users\boston\documents\visual studio 2010\Projects\Kanban_board_project\Kanban_board_project\obj\Debug\Kanban_board_project.pdb
+C:\Users\Boston\Documents\Visual Studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Ext.Net.xml
+C:\Users\Boston\Documents\Visual Studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Ext.Net.Utilities.xml
+C:\Users\Boston\Documents\Visual Studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Newtonsoft.Json.xml
+C:\Users\Boston\Documents\Visual Studio 2010\Projects\Kanban_board_project\Kanban_board_project\bin\Transformer.NET.xml
+C:\Users\Boston\Documents\Visual Studio 2010\Projects\Kanban_board_project\Kanban_board_project\obj\Debug\Kanban_board_project.csprojResolveAssemblyReference.cache
