@@ -19,6 +19,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.7.429, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\AjaxControlToolkit.Binary.NET4\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Ext.Net">
       <HintPath>..\packages\Ext.NET.2.2.0.1\lib\net40\Ext.Net.dll</HintPath>
     </Reference>
@@ -49,6 +58,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -69,6 +79,7 @@
     <Reference Include="Transformer.NET">
       <HintPath>..\packages\Transformer.NET.2.1.1\lib\net35\Transformer.NET.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Ext.NET.Utilities.LICENSE.txt" />
@@ -79,12 +90,12 @@
     <Content Include="App_Readme\Ext.NET\README.txt" />
     <Content Include="App_Readme\Transformer.NET\LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET\README.txt" />
-    <Content Include="Ext.NET.Default.aspx" />
     <Content Include="html\Business_zonne_b.jpg" />
     <Content Include="html\Business_zonne_th.jpg" />
     <Content Include="html\CImage.aspx" />
     <Content Include="html\Dashboard.aspx" />
     <Content Include="html\Default.aspx" />
+    <Content Include="html\drawKanban.aspx" />
     <Content Include="html\image.txt" />
     <Content Include="html\images\bg.jpg" />
     <Content Include="html\images\icon_default.jpg" />
@@ -98,6 +109,7 @@
     <Content Include="html\login_files\formoid1\jquery.min.js" />
     <Content Include="html\login_files\formoid1\sprite.png" />
     <Content Include="html\main.aspx" />
+    <Content Include="html\Midashboard.aspx" />
     <Content Include="html\Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="html\Scripts\jquery-1.4.1.js" />
     <Content Include="html\Scripts\jquery-1.4.1.min.js" />
@@ -118,6 +130,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Kanban.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="html\drawKanban.aspx.cs">
+      <DependentUpon>drawKanban.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\drawKanban.aspx.designer.cs">
+      <DependentUpon>drawKanban.aspx</DependentUpon>
     </Compile>
     <Compile Include="html\management.cs" />
     <Compile Include="html\App_Code\RandomImage.cs" />
@@ -142,6 +161,13 @@
     </Compile>
     <Compile Include="html\main.aspx.designer.cs">
       <DependentUpon>main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="html\Midashboard.aspx.cs">
+      <DependentUpon>Midashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\Midashboard.aspx.designer.cs">
+      <DependentUpon>Midashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="html\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>

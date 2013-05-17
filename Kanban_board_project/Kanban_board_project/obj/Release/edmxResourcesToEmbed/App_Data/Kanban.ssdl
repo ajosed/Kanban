@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KanbanModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="KanbanModelStoreContainer">
+    <EntitySet Name="BOARDS" EntityType="KanbanModel.Store.BOARDS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CARDS" EntityType="KanbanModel.Store.CARDS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CARDSxCOLUMNAS" EntityType="KanbanModel.Store.CARDSxCOLUMNAS" store:Type="Tables" store:Schema="dbo" store:Name="CARDSxCOLUMNAS">
+      <DefiningQuery>SELECT 
+      [CARDSxCOLUMNAS].[IDCARD] AS [IDCARD], 
+      [CARDSxCOLUMNAS].[IDCOLUMNA] AS [IDCOLUMNA]
+      FROM [dbo].[CARDSxCOLUMNAS] AS [CARDSxCOLUMNAS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CARDSxUSUARIOS" EntityType="KanbanModel.Store.CARDSxUSUARIOS" store:Type="Tables" store:Schema="dbo" store:Name="CARDSxUSUARIOS">
+      <DefiningQuery>SELECT 
+      [CARDSxUSUARIOS].[IDCARD] AS [IDCARD], 
+      [CARDSxUSUARIOS].[IDUSUARIO] AS [IDUSUARIO]
+      FROM [dbo].[CARDSxUSUARIOS] AS [CARDSxUSUARIOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="COLUMNA" EntityType="KanbanModel.Store.COLUMNA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRIORIDADES" EntityType="KanbanModel.Store.PRIORIDADES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ROLE" EntityType="KanbanModel.Store.ROLE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="KanbanModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TIPO" EntityType="KanbanModel.Store.TIPO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOS" EntityType="KanbanModel.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOSxBOARD" EntityType="KanbanModel.Store.USUARIOSxBOARD" store:Type="Tables" store:Schema="dbo" store:Name="USUARIOSxBOARD">
+      <DefiningQuery>SELECT 
+      [USUARIOSxBOARD].[IDUSUARIO] AS [IDUSUARIO], 
+      [USUARIOSxBOARD].[IDBOARD] AS [IDBOARD], 
+      [USUARIOSxBOARD].[ROLE] AS [ROLE]
+      FROM [dbo].[USUARIOSxBOARD] AS [USUARIOSxBOARD]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CARDS_PRIORIDADES" Association="KanbanModel.Store.FK_CARDS_PRIORIDADES">
+      <End Role="PRIORIDADES" EntitySet="PRIORIDADES" />
+      <End Role="CARDS" EntitySet="CARDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDS_TIPO" Association="KanbanModel.Store.FK_CARDS_TIPO">
+      <End Role="TIPO" EntitySet="TIPO" />
+      <End Role="CARDS" EntitySet="CARDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDSxCOLUMNAS_CARDS" Association="KanbanModel.Store.FK_CARDSxCOLUMNAS_CARDS">
+      <End Role="CARDS" EntitySet="CARDS" />
+      <End Role="CARDSxCOLUMNAS" EntitySet="CARDSxCOLUMNAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDSxCOLUMNAS_COLUMNA" Association="KanbanModel.Store.FK_CARDSxCOLUMNAS_COLUMNA">
+      <End Role="COLUMNA" EntitySet="COLUMNA" />
+      <End Role="CARDSxCOLUMNAS" EntitySet="CARDSxCOLUMNAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDSxUSUARIOS_CARDS" Association="KanbanModel.Store.FK_CARDSxUSUARIOS_CARDS">
+      <End Role="CARDS" EntitySet="CARDS" />
+      <End Role="CARDSxUSUARIOS" EntitySet="CARDSxUSUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOSxBOARD_BOARDS" Association="KanbanModel.Store.FK_USUARIOSxBOARD_BOARDS">
+      <End Role="BOARDS" EntitySet="BOARDS" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOSxBOARD_ROLE" Association="KanbanModel.Store.FK_USUARIOSxBOARD_ROLE">
+      <End Role="ROLE" EntitySet="ROLE" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOSxBOARD_USUARIOS" Association="KanbanModel.Store.FK_USUARIOSxBOARD_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOSxBOARD" EntitySet="USUARIOSxBOARD" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BOARDS">
+    <Key>
+      <PropertyRef Name="IDBOARD" />
+    </Key>
+    <Property Name="IDBOARD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="text" Nullable="false" />
+    <Property Name="FECHAINICIO" Type="text" />
+    <Property Name="COLUMNAS" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARDS">
+    <Key>
+      <PropertyRef Name="IDCARD" />
+    </Key>
+    <Property Name="IDCARD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="text" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="text" />
+    <Property Name="FECHAINICIO" Type="text" Nullable="false" />
+    <Property Name="FECHAFINAL" Type="text" Nullable="false" />
+    <Property Name="COLOR" Type="text" Nullable="false" />
+    <Property Name="PRIORIDAD" Type="int" Nullable="false" />
+    <Property Name="TIPO" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Kanban.dbo.CARDSxCOLUMNAS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="CARDSxCOLUMNAS">
+    <Key>
+      <PropertyRef Name="IDCARD" />
+      <PropertyRef Name="IDCOLUMNA" />
+    </Key>
+    <Property Name="IDCARD" Type="int" Nullable="false" />
+    <Property Name="IDCOLUMNA" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Kanban.dbo.CARDSxUSUARIOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="CARDSxUSUARIOS">
+    <Key>
+      <PropertyRef Name="IDCARD" />
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDCARD" Type="int" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COLUMNA">
+    <Key>
+      <PropertyRef Name="IDCOLUMNA" />
+    </Key>
+    <Property Name="IDCOLUMNA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IDBOARD" Type="int" Nullable="false" />
+    <Property Name="POSICION" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="text" Nullable="false" />
+    <Property Name="WHIPLIMITE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRIORIDADES">
+    <Key>
+      <PropertyRef Name="IDPRIORIDADES" />
+    </Key>
+    <Property Name="IDPRIORIDADES" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PRIORIDAD" Type="text" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="IDROLE" />
+    </Key>
+    <Property Name="IDROLE" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ROLE" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TIPO">
+    <Key>
+      <PropertyRef Name="IDTIPOS" />
+    </Key>
+    <Property Name="IDTIPOS" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TIPO" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="PROFECION" Type="varchar" MaxLength="50" />
+    <Property Name="PICTURE" Type="image" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="CORREO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Kanban.dbo.USUARIOSxBOARD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="USUARIOSxBOARD">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+      <PropertyRef Name="IDBOARD" />
+      <PropertyRef Name="ROLE" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+    <Property Name="IDBOARD" Type="int" Nullable="false" />
+    <Property Name="ROLE" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CARDS_PRIORIDADES">
+    <End Role="PRIORIDADES" Type="KanbanModel.Store.PRIORIDADES" Multiplicity="1" />
+    <End Role="CARDS" Type="KanbanModel.Store.CARDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRIORIDADES">
+        <PropertyRef Name="IDPRIORIDADES" />
+      </Principal>
+      <Dependent Role="CARDS">
+        <PropertyRef Name="PRIORIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDS_TIPO">
+    <End Role="TIPO" Type="KanbanModel.Store.TIPO" Multiplicity="1" />
+    <End Role="CARDS" Type="KanbanModel.Store.CARDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO">
+        <PropertyRef Name="IDTIPOS" />
+      </Principal>
+      <Dependent Role="CARDS">
+        <PropertyRef Name="TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDSxCOLUMNAS_CARDS">
+    <End Role="CARDS" Type="KanbanModel.Store.CARDS" Multiplicity="1" />
+    <End Role="CARDSxCOLUMNAS" Type="KanbanModel.Store.CARDSxCOLUMNAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDS">
+        <PropertyRef Name="IDCARD" />
+      </Principal>
+      <Dependent Role="CARDSxCOLUMNAS">
+        <PropertyRef Name="IDCARD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDSxCOLUMNAS_COLUMNA">
+    <End Role="COLUMNA" Type="KanbanModel.Store.COLUMNA" Multiplicity="1" />
+    <End Role="CARDSxCOLUMNAS" Type="KanbanModel.Store.CARDSxCOLUMNAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COLUMNA">
+        <PropertyRef Name="IDCOLUMNA" />
+      </Principal>
+      <Dependent Role="CARDSxCOLUMNAS">
+        <PropertyRef Name="IDCOLUMNA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDSxUSUARIOS_CARDS">
+    <End Role="CARDS" Type="KanbanModel.Store.CARDS" Multiplicity="1" />
+    <End Role="CARDSxUSUARIOS" Type="KanbanModel.Store.CARDSxUSUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDS">
+        <PropertyRef Name="IDCARD" />
+      </Principal>
+      <Dependent Role="CARDSxUSUARIOS">
+        <PropertyRef Name="IDCARD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOSxBOARD_BOARDS">
+    <End Role="BOARDS" Type="KanbanModel.Store.BOARDS" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.Store.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOARDS">
+        <PropertyRef Name="IDBOARD" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="IDBOARD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOSxBOARD_ROLE">
+    <End Role="ROLE" Type="KanbanModel.Store.ROLE" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.Store.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="IDROLE" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOSxBOARD_USUARIOS">
+    <End Role="USUARIOS" Type="KanbanModel.Store.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOSxBOARD" Type="KanbanModel.Store.USUARIOSxBOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="USUARIOSxBOARD">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
