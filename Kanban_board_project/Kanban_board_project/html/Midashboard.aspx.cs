@@ -17,12 +17,19 @@ namespace Kanban_board_project.html
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
            //sacar el id y redireccionar hacia el kanban board  y mandamos en session el id del board
-
+            MessageBoxShow(this, this.GridView1.SelectedIndex.ToString());
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //borramos la board segun el id y si somos viewer o owner
+        }
+
+        private void MessageBoxShow(Page page, string message)
+        {
+            Literal ltr = new Literal();
+            ltr.Text = @"<script type='text/javascript'> alert('" + message + "') </script>";
+            page.Controls.Add(ltr);
         }
     }
 }

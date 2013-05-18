@@ -93,6 +93,7 @@
     <Content Include="html\Business_zonne_b.jpg" />
     <Content Include="html\Business_zonne_th.jpg" />
     <Content Include="html\CImage.aspx" />
+    <Content Include="html\Configuration.aspx" />
     <Content Include="html\Dashboard.aspx" />
     <Content Include="html\Default.aspx" />
     <Content Include="html\drawKanban.aspx" />
@@ -130,6 +131,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Kanban.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="html\Configuration.aspx.cs">
+      <DependentUpon>Configuration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\Configuration.aspx.designer.cs">
+      <DependentUpon>Configuration.aspx</DependentUpon>
     </Compile>
     <Compile Include="html\drawKanban.aspx.cs">
       <DependentUpon>drawKanban.aspx</DependentUpon>
