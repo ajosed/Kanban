@@ -142,11 +142,25 @@ namespace Kanban_board_project
                 if (ini.CompareTo(fin) == 1)
                     return false;
             }
-            return crearCarta(nombre, descripcion, color, ini.ToShortDateString(), fin.ToShortDateString(), prioridad, tipo);
+            return crearCarta(nombre, descripcion, color, ini!=null?ini.ToShortDateString():null, fin.ToShortDateString(), prioridad, tipo);
         }
 
         public static Boolean crearCarta(string nombre, string descripcion, string color, string ini, string fin, int prioridad, int tipo)
         {
+            KanbanEntities ke = new KanbanEntities();
+            if (prioridad <= 0)
+            {
+                return false;
+            }
+            CARD li = new CARD();
+            li.FECHAFINAL = fin;
+            if (ini != null) li.FECHAINICIO=ini;
+            li.NOMBRE = nombre;
+            li.DESCRIPCION = descripcion;
+            li.COLOR = color;
+            li.PRIORIDAD = prioridad;
+            li.TIPO = tipo;
+            ke.AddToCARDS(li);
             return true;
         }
 
@@ -154,11 +168,39 @@ namespace Kanban_board_project
             KanbanEntities ke = new KanbanEntities();
             var carta= ke.CARDS.Where(cart => cart.IDCARD == id).First();
             carta.FECHAINICIO = DateTime.Now.ToShortDateString();
-           
+          
         }
 
-        public static Boolean crearCarta(int id, string nombre, string descripcion, string color, string fin, int prioridad, int tipo)
+      
+
+        public static Boolean editarCarta(int id, string nombre, string descripcion, string color, string fin, int prioridad)
         {
+            KanbanEntities ke = new KanbanEntities();
+            if (ke.CARDS.Count(co => co.IDCARD.CompareTo(id)==0) == 0)
+            {
+                return false;
+            }
+            var carta = ke.CARDS.Where(cart => cart.IDCARD == id).First();
+            if (nombre != null)
+            {
+                carta.NOMBRE = nombre;
+            }
+            if (fin != null)
+            {
+                
+                carta.FECHAFINAL = fin;
+            }
+            
+            if (color != null)
+            {
+                carta.COLOR = color;
+            }
+            if (prioridad != null)
+            {
+                if (prioridad <= 0)
+                    return false;
+                carta.PRIORIDAD = prioridad;
+            }
             return true;
         }
     }
