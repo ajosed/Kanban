@@ -134,5 +134,32 @@ namespace Kanban_board_project
             KanbanEntities ke = new KanbanEntities();
             return ke.USUARIOS.Count(co => co.CORREO.CompareTo(email)==0)==0 ?false:true;
         }
+
+        public static Boolean crearCarta(string nombre, string descripcion, string color, DateTime ini, DateTime fin, int prioridad, int tipo)
+        {
+            if (ini!=null && fin!=null)
+            {
+                if (ini.CompareTo(fin) == 1)
+                    return false;
+            }
+            return crearCarta(nombre, descripcion, color, ini.ToShortDateString(), fin.ToShortDateString(), prioridad, tipo);
+        }
+
+        public static Boolean crearCarta(string nombre, string descripcion, string color, string ini, string fin, int prioridad, int tipo)
+        {
+            return true;
+        }
+
+        public static void inicializarCarta(int id){
+            KanbanEntities ke = new KanbanEntities();
+            var carta= ke.CARDS.Where(cart => cart.IDCARD == id).First();
+            carta.FECHAINICIO = DateTime.Now.ToShortDateString();
+           
+        }
+
+        public static Boolean crearCarta(int id, string nombre, string descripcion, string color, string fin, int prioridad, int tipo)
+        {
+            return true;
+        }
     }
 }
