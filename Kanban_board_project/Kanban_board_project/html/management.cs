@@ -20,7 +20,7 @@ namespace Kanban_board_project
     {
         public Boolean yaExiste(String uName, String password)
         {
-            string conec = @"Data Source=BOSTON-PC\SQL_SERVER_2008;Initial Catalog=Kanban;Integrated Security=True";
+            string conec = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
             SqlConnection cone = new SqlConnection(conec);
 
             cone.Open();
@@ -39,7 +39,7 @@ namespace Kanban_board_project
 
         public Boolean yaExisteUser(String uName)
         {
-            string conec = @"Data Source=BOSTON-PC\SQL_SERVER_2008;Initial Catalog=Kanban;Integrated Security=True";
+            string conec = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
             SqlConnection cone = new SqlConnection(conec);
 
             cone.Open();
@@ -58,7 +58,7 @@ namespace Kanban_board_project
 
         public Boolean insertingRecord(string name, string profesion, string email, string user, string password)
         {
-            string conec = @"Data Source=BOSTON-PC\SQL_SERVER_2008;Initial Catalog=Kanban;Integrated Security=True";
+            string conec = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
             SqlConnection cone = new SqlConnection(conec);
 
             cone.Open();
