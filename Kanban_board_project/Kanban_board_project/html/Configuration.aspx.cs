@@ -18,8 +18,8 @@ namespace Kanban_board_project.html
 
         protected void Page_Load(object sender, EventArgs e)
         {
-             this.Panel1.MinHeight = 600;
-
+            Session["boardid"] = 1;
+            this.Panel1.MinHeight = 600;
             try
             {
 
@@ -27,10 +27,10 @@ namespace Kanban_board_project.html
                 string connectionString = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
                 SqlConnection conexion = new SqlConnection(connectionString);
                 conexion.Open();
-                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
-                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=1";
-                //string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=" + Session["boardid"];
-                string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=1";
+                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
+                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=2 order by POSICION";
+                string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=" + Session["boardid"];
+                //string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=2";
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 SqlCommand cmd2 = new SqlCommand(query2, conexion);
@@ -50,11 +50,10 @@ namespace Kanban_board_project.html
                     p.AutoScroll = true;
                     p.TitleAlign = Ext.Net.TitleAlign.Center;
                     this.Panel1.Items.Add(p);
-                    p.Add(new Ext.Net.Button(""){Listeners ={Click ={Handler="p.Text=\"holis\";"}}});
-                                id.Add(p);
-                            }
+                    id.Add(p);
+                }
+
                 this.Panel1.DataBind();
-                configcontrols();
                 conexion.Close();
 
             }
@@ -62,6 +61,7 @@ namespace Kanban_board_project.html
             {
                 MessageBoxShow(this, ex.StackTrace);
             }
+
 
         }
 
@@ -71,31 +71,9 @@ namespace Kanban_board_project.html
             ltr.Text = @"<script type='text/javascript'> alert('" + message + "') </script>";
             page.Controls.Add(ltr);
         }
-
-        public void configcontrols()
+        [DirectMethod]
+        protected void holamundo(object sender, DirectEventArgs e)
         {
-
-            /*System.Web.UI.WebControls.Button boton = new System.Web.UI.WebControls.Button();
-            boton.Text = "Hola mundo";
-            boton.Click += holamundo;
-            */
-            Ext.Net.Button p = new Ext.Net.Button("hola")
-            {
-                Listeners =
-                {
-                    Click =
-                    {
-                        Handler="p.Text=\"holis\";"
-                    }
-                }
-            };
-            this.Panel1.Items.Add(p);
-            
-        }
-
-        private void holamundo(object sender, EventArgs e)
-        {
-
             MessageBoxShow(this, "hola mundo");
         }
     }

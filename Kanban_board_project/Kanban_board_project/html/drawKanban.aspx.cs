@@ -17,6 +17,7 @@ namespace Kanban_board_project.html
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["boardid"] = 1;
             this.Panel1.MinHeight = 600;
             try
             {
@@ -25,10 +26,10 @@ namespace Kanban_board_project.html
                 string connectionString = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
                 SqlConnection conexion = new SqlConnection(connectionString);
                 conexion.Open();
-                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
-                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=2 order by POSICION";
-                //string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=" + Session["boardid"];
-                string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=2";
+                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
+                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=2 order by POSICION";
+                string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=" + Session["boardid"];
+                //string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=2";
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 SqlCommand cmd2 = new SqlCommand(query2, conexion);
@@ -48,8 +49,6 @@ namespace Kanban_board_project.html
                     p.BodyPadding = 20;
                     p.Flex = 1;
                     p.AutoScroll = true;
-                    p.Draggable = true;
-                    p.Floatable = true;
                     p.Cls = "draggable";
                     p.TitleAlign = Ext.Net.TitleAlign.Center;
                     id.Add(p);
@@ -58,29 +57,12 @@ namespace Kanban_board_project.html
                     p1.Cls = "dropable";
                     p1.Layout = Ext.Net.LayoutType.Fit.ToString();
                     p1.Add(p);
-                   
-                    this.Panel1.Items.Add(p1);
-                    foreach (Container region in Panel1.Items)
-                    {
-                        p = (Ext.Net.Panel)region.Items[0];
-                        p.DraggablePanelConfig = new DragSource
-                        {
-                            Group = "panelDD",
-                            StartDrag =
-                            {
-                                Fn = "startDrag"
-                            },
 
-                            EndDrag =
-                            {
-                                Fn = "endDrag"
-                            }
-                        };
-                    }
+                    this.Panel1.Items.Add(p1);
+
                 }
 
                 this.Panel1.DataBind();
-
                 conexion.Close();
 
             }
@@ -110,13 +92,14 @@ namespace Kanban_board_project.html
                 string connectionString = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
                 SqlConnection conexion = new SqlConnection(connectionString);
                 conexion.Open();
-                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
-                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=2 order by POSICION";
-                //string query2 = "SELECT [NOMBRE] FROM [Kanbanboard].[dbo].[BOARDS] where IDBOARD=" + Session["boardid"];
-                string query2 = "delete [Kanbanboard].[dbo].[COLUMNA] where IDBOARD=2 ";
+                string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=" + Session["boardid"];
+                //string query = "SELECT *  FROM [Kanbanboard].[dbo].[COLUMNA]where IDBOARD=2 order by POSICION";
+                string query2 = "delete [Kanbanboard].[dbo].[COLUMNA] where IDBOARD=" + Session["boardid"];
+                //string query2 = "delete [Kanbanboard].[dbo].[COLUMNA] where IDBOARD=2 ";
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 SqlCommand cmd2 = new SqlCommand(query2, conexion);
+                cmd2.ExecuteNonQuery();
                 SqlDataAdapter ad = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
 
@@ -144,8 +127,6 @@ namespace Kanban_board_project.html
                 bc.WriteToServer(row1);
 
                 conexion.Close();
-
-            
         }
         public int buscar(DataTable dt, string s)
         {

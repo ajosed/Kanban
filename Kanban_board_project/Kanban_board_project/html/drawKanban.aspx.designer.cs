@@ -58,12 +58,12 @@ namespace Kanban_board_project.html {
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// Control DropTarget1.
+        /// Control BoxReorderer1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DropTarget DropTarget1;
+        protected global::Ext.Net.BoxReorderer BoxReorderer1;
     }
 }
