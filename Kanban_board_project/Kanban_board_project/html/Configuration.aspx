@@ -11,6 +11,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <%-- <div style="width:700px; margin-left:auto; margin-right:auto; margin-top:auto">--%>
+        <center>
         <div>
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
@@ -26,7 +28,7 @@
               
     </ext:Panel>
     </div>
-    
+    </center>
     </form>
     <script">
 

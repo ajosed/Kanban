@@ -18,7 +18,18 @@ namespace Kanban_board_project.html
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["boardid"] = 1;
+            X.Msg.Show(new MessageBoxConfig
+            {
+                Message = "Loading please whait..",
+                ProgressText = "Loading.......",
+                Width = 300,
+                Wait = true,
+                WaitConfig = new WaitConfig { Interval = 200 },
+                IconCls = "ext-mb-download",AnimEl=Panel1.ID
+            });
+            if(Session["boardid"]==null){
+                Response.Redirect("~/html/drawKanban.aspx");
+            }
             this.Panel1.MinHeight = 600;
             try
             {
@@ -62,7 +73,7 @@ namespace Kanban_board_project.html
                 MessageBoxShow(this, ex.StackTrace);
             }
 
-
+            this.ResourceManager1.AddScript("setTimeout(function () { Ext.MessageBox.hide(); }, 3000);");
         }
 
         private void MessageBoxShow(Page page, string message)
