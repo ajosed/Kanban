@@ -49,6 +49,7 @@ namespace Kanban_board_project.html
             if (mg.yaExiste(userText, passText))
             {
                 Session["user"] = userText;
+                Session["userid"] = mg.getid(userText);
                 Response.Redirect("Dashboard.aspx");
             }
             else

@@ -106,7 +106,18 @@ namespace Kanban_board_project
         public void sendMessage()
         {
         }
+        public int getid(string usuario)
+        {
+            string conec = ConfigurationManager.ConnectionStrings["Kanban"].ConnectionString;
+            SqlConnection cone = new SqlConnection(conec);
 
+            cone.Open();
+            string query = "select IDUSUARIO from [Kanbanboard].[dbo].[USUARIOS] where USUARIO LIKE '" + usuario + "'"; 
+            SqlCommand cmd = new System.Data.SqlClient.SqlCommand(query, cone);
+            int id=(int)cmd.ExecuteScalar();
+            cone.Close();
+            return id;
+        }
         public int emailIsValid(String emailToEvaluate)
         {
             CheckingEmailAddress.EmailVerify Verifier = new CheckingEmailAddress.EmailVerify();

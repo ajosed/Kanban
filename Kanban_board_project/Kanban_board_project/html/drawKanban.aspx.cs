@@ -17,7 +17,6 @@ namespace Kanban_board_project.html
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["boardid"] = 1;
             this.Panel1.MinHeight = 600;
             try
             {
@@ -143,10 +142,6 @@ namespace Kanban_board_project.html
                 }
             }
             return -1;
-        }
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/html/Configuration.aspx");
         }
     }
 }

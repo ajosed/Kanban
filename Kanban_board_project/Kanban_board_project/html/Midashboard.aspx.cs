@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using Ext.Net;
 
 namespace Kanban_board_project.html
 {
@@ -16,14 +20,13 @@ namespace Kanban_board_project.html
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           //sacar el id y redireccionar hacia el kanban board  y mandamos en session el id del board
-            MessageBoxShow(this, this.GridView1.SelectedIndex.ToString());
+            //sacar el id y redireccionar hacia el kanban board  y mandamos en session el id del board
+            Session["boardid"] = this.GridView1.Rows[this.GridView1.SelectedIndex].Cells[1].Text;
+            int x = int.Parse(this.GridView1.Rows[this.GridView1.SelectedIndex].Cells[1].Text);
+            Response.Redirect("~/html/drawKanban.aspx");
+            // MessageBoxShow(this, this.GridView1.SelectedIndex.ToString());
         }
 
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            //borramos la board segun el id y si somos viewer o owner
-        }
 
         private void MessageBoxShow(Page page, string message)
         {
@@ -31,5 +34,15 @@ namespace Kanban_board_project.html
             ltr.Text = @"<script type='text/javascript'> alert('" + message + "') </script>";
             page.Controls.Add(ltr);
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("btndelete"))
+            {
+                MessageBoxShow(this, "Borrado!!!"+this.GridView1.Rows[1].Cells[1].Text);
+            }
+            
+        }
+
     }
 }

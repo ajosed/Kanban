@@ -19,7 +19,7 @@
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
         <div   align="right" id="div1">
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Configuracion" />
+            <asp:Button ID="Button2" runat="server" Text="Configuracion" PostBackUrl="~/html/Configuration.aspx" />
         </div>
 
         <ext:Panel ID="Panel1" runat="server" Height="300"  Title="Title" TitleAlign="Center" AutoScroll="true">

@@ -28,7 +28,7 @@ namespace Kanban_board_project.html
                 IconCls = "ext-mb-download",AnimEl=Panel1.ID
             });
             if(Session["boardid"]==null){
-                Response.Redirect("~/html/drawKanban.aspx");
+                Response.Redirect("~/html/Midashboard.aspx");
             }
             this.Panel1.MinHeight = 600;
             try
@@ -73,7 +73,7 @@ namespace Kanban_board_project.html
                 MessageBoxShow(this, ex.StackTrace);
             }
 
-            this.ResourceManager1.AddScript("setTimeout(function () { Ext.MessageBox.hide(); }, 3000);");
+            this.ResourceManager1.AddScript("setTimeout(function () { Ext.MessageBox.hide(); }, 2000);");
         }
 
         private void MessageBoxShow(Page page, string message)

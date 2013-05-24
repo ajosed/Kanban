@@ -94,6 +94,7 @@
     <Content Include="html\Business_zonne_th.jpg" />
     <Content Include="html\CImage.aspx" />
     <Content Include="html\Configuration.aspx" />
+    <Content Include="html\Crearboard.aspx" />
     <Content Include="html\Dashboard.aspx" />
     <Content Include="html\Default.aspx" />
     <Content Include="html\drawKanban.aspx" />
@@ -111,12 +112,14 @@
     <Content Include="html\login_files\formoid1\sprite.png" />
     <Content Include="html\main.aspx" />
     <Content Include="html\Midashboard.aspx" />
+    <Content Include="html\Newboard.aspx" />
     <Content Include="html\Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="html\Scripts\jquery-1.4.1.js" />
     <Content Include="html\Scripts\jquery-1.4.1.min.js" />
     <Content Include="html\register.aspx" />
     <Content Include="html\registration.html" />
     <Content Include="html\style.css" />
+    <Content Include="html\usuarioXboard.aspx" />
     <Content Include="html\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -139,12 +142,22 @@
     <Compile Include="html\Configuration.aspx.designer.cs">
       <DependentUpon>Configuration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="html\Crearboard.aspx.cs">
+      <DependentUpon>Crearboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\Crearboard.aspx.designer.cs">
+      <DependentUpon>Crearboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="html\drawKanban.aspx.cs">
       <DependentUpon>drawKanban.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="html\drawKanban.aspx.designer.cs">
       <DependentUpon>drawKanban.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="html\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="html\management.cs" />
     <Compile Include="html\App_Code\RandomImage.cs" />
@@ -177,12 +190,26 @@
     <Compile Include="html\Midashboard.aspx.designer.cs">
       <DependentUpon>Midashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="html\Newboard.aspx.cs">
+      <DependentUpon>Newboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\Newboard.aspx.designer.cs">
+      <DependentUpon>Newboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="html\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="html\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="html\usuarioXboard.aspx.cs">
+      <DependentUpon>usuarioXboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html\usuarioXboard.aspx.designer.cs">
+      <DependentUpon>usuarioXboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="html\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -211,6 +238,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Kanban.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="html\Handler1.ashx" />
     <None Include="html\login.php" />
     <None Include="html\login_files\formoid1\form.formoid" />
     <None Include="html\login_files\formoid1\handler.php" />
